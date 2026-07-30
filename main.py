@@ -64,63 +64,7 @@ class Offsets:
     ENT_ENTRY_OFFSET      = 0x10        # Offset within group entry to get pointer
     ENT_SLOT_STRIDE       = 0x78        # Stride between entity slots within a group
     MAX_PLAYERS           = 64          # Max players in a match
-
-class Offsets:
-    # Default fallbacks
-    dwEntityList = 0x0
-    dwLocalPlayerPawn = 0x0
-    dwLocalPlayerController = 0x0
-    dwCSGOInput = 0x0
-    dwGlobalVars = 0x0
-
-    dwForceAttack = 0x0
-    dwForceJump = 0x0
-
-    m_iIDEntIndex = 0x0
-    m_iHealth = 0x0
-    m_iTeamNum = 0x0
-    m_lifeState = 0x0
-    m_fFlags = 0x0
-    m_pGameSceneNode = 0x0
-    m_vOldOrigin = 0x0
-    m_hPawn = 0x0
-
-    m_hPlayerPawn = 0x0
-    m_iPawnHealth = 0x0
-
-    ENT_GROUP_STRIDE = 0x10
-    ENT_ENTRY_OFFSET = 0x10
-    ENT_SLOT_STRIDE = 0x78
-    MAX_PLAYERS = 64
-
-class Offsets:
-    # Default fallbacks
-    dwEntityList = 0x0
-    dwLocalPlayerPawn = 0x0
-    dwLocalPlayerController = 0x0
-    dwCSGOInput = 0x0
-    dwGlobalVars = 0x0
-
-    dwForceAttack = 0x0
-    dwForceJump = 0x0
-
-    m_iIDEntIndex = 0x0
-    m_iHealth = 0x0
-    m_iTeamNum = 0x0
-    m_lifeState = 0x0
-    m_fFlags = 0x0
-    m_pGameSceneNode = 0x0
-    m_vOldOrigin = 0x0
-    m_hPawn = 0x0
-
-    m_hPlayerPawn = 0x0
-    m_iPawnHealth = 0x0
-
-    ENT_GROUP_STRIDE = 0x10
-    ENT_ENTRY_OFFSET = 0x10
-    ENT_SLOT_STRIDE = 0x78
-    MAX_PLAYERS = 64
-
+    
     @classmethod
     def load_from_json(cls, filepath: str) -> None:
         """Reads offset values from a JSON file and sets them on the class."""
