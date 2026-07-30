@@ -31,12 +31,6 @@ from util import Entity
 # ================================================================
 # Read offset 
 # Fallback or safely try loading
-try:
-    with open('offset.json', 'r') as f:
-        data = json.load(f)
-except (FileNotFoundError, json.JSONDecodeError) as e:
-    print(f"Error loading offset.json ({e}), using default/empty fallback.")
-    data = {}
 
 class Offsets:
     # --- client.dll globals (absolute RVAs from module base) ---
@@ -71,10 +65,82 @@ class Offsets:
     ENT_SLOT_STRIDE       = 0x78        # Stride between entity slots within a group
     MAX_PLAYERS           = 64          # Max players in a match
 
+class Offsets:
+    # Default fallbacks
+    dwEntityList = 0x0
+    dwLocalPlayerPawn = 0x0
+    dwLocalPlayerController = 0x0
+    dwCSGOInput = 0x0
+    dwGlobalVars = 0x0
 
-# ================================================================
-# BUTTON FLAGS (same for CS:GO and CS2)
-# ================================================================
+    dwForceAttack = 0x0
+    dwForceJump = 0x0
+
+    m_iIDEntIndex = 0x0
+    m_iHealth = 0x0
+    m_iTeamNum = 0x0
+    m_lifeState = 0x0
+    m_fFlags = 0x0
+    m_pGameSceneNode = 0x0
+    m_vOldOrigin = 0x0
+    m_hPawn = 0x0
+
+    m_hPlayerPawn = 0x0
+    m_iPawnHealth = 0x0
+
+    ENT_GROUP_STRIDE = 0x10
+    ENT_ENTRY_OFFSET = 0x10
+    ENT_SLOT_STRIDE = 0x78
+    MAX_PLAYERS = 64
+
+class Offsets:
+    # Default fallbacks
+    dwEntityList = 0x0
+    dwLocalPlayerPawn = 0x0
+    dwLocalPlayerController = 0x0
+    dwCSGOInput = 0x0
+    dwGlobalVars = 0x0
+
+    dwForceAttack = 0x0
+    dwForceJump = 0x0
+
+    m_iIDEntIndex = 0x0
+    m_iHealth = 0x0
+    m_iTeamNum = 0x0
+    m_lifeState = 0x0
+    m_fFlags = 0x0
+    m_pGameSceneNode = 0x0
+    m_vOldOrigin = 0x0
+    m_hPawn = 0x0
+
+    m_hPlayerPawn = 0x0
+    m_iPawnHealth = 0x0
+
+    ENT_GROUP_STRIDE = 0x10
+    ENT_ENTRY_OFFSET = 0x10
+    ENT_SLOT_STRIDE = 0x78
+    MAX_PLAYERS = 64
+
+    @classmethod
+    def load_from_json(cls, filepath: str) -> None:
+        """Reads offset values from a JSON file and sets them on the class."""
+        try:
+            with open(filepath, "r") as f:
+                data = json.load(f)
+
+            for key, val in data.items():
+                if hasattr(cls, key):
+                    # Convert hex string (e.g. "0x23A5238") to integer if needed
+                    if isinstance(val, str) and val.startswith("0x"):
+                        val = int(val, 16)
+
+                    setattr(cls, key, val)
+
+            print(f"[+] Offsets successfully loaded from {filepath}")
+        except FileNotFoundError:
+            print(f"[-] Error: Could not find JSON file at {filepath}")
+        except json.JSONDecodeError as e:
+            print(f"[-] Error parsing JSON file: {e}")
 
 class Buttons:
     IN_ATTACK    = 1 << 0
