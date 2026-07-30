@@ -64,9 +64,8 @@ class Offsets:
     ENT_ENTRY_OFFSET      = 0x0        # Offset within group entry to get pointer
     ENT_SLOT_STRIDE       = 0x0        # Stride between entity slots within a group
     MAX_PLAYERS           = 64          # Max players in a match
-    
     @classmethod
-    def load_from_json(cls, filepath: str) -> None:
+    def load_from_json(cls, filepath: str) -> bool:
         """Reads offset values from a JSON file and sets them on the class."""
         try:
             with open(filepath, "r") as f:
@@ -74,18 +73,20 @@ class Offsets:
 
             for key, val in data.items():
                 if hasattr(cls, key):
-                    # Convert hex string (e.g. "0x23A5238") to integer if needed
+                    # Convert hex string (e.g. "0x23A5238") to integer if stored as string
                     if isinstance(val, str) and val.startswith("0x"):
                         val = int(val, 16)
 
                     setattr(cls, key, val)
 
             print(f"[+] Offsets successfully loaded from {filepath}")
+            return True
         except FileNotFoundError:
-            print(f"[-] Error: Could not find JSON file at {filepath}")
+            print(f"[-] Error: Could not find '{filepath}'. Make sure it exists in the same directory.")
+            return False
         except json.JSONDecodeError as e:
-            print(f"[-] Error parsing JSON file: {e}")
-
+            print(f"[-] Error parsing '{filepath}': {e}")
+            return False
 class Buttons:
     IN_ATTACK    = 1 << 0
     IN_JUMP      = 1 << 1
