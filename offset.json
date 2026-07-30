@@ -1,4 +1,23 @@
 {
-  
-
+    "dwEntityList" : ,
+    "dwLocalPlayerPawn" : 0x23A5238,
+    "dwLocalPlayerController" : 0x237FB70,
+    "dwCSGOInput" : 0x23BA790, 
+    "dwGlobalVars" : 0x2090D60,  
+    "dwForceAttack" : 0x16C1E80,
+    "dwForceJump" : 0x16C2390,
+    "m_iIDEntIndex" : 0x341C,      
+    "m_iHealth" : 0x34C,      
+    "m_iTeamNum" : 0x3EB,      
+    "m_lifeState" : 0x350,      
+    "m_fFlags" : 0x3F8,
+    "m_pGameSceneNode" : 0x330,      
+    "m_vOldOrigin" : 0x15B0,
+    "m_hPawn" : 0x62C,
+    "m_hPlayerPawn" : 0x90C,     
+    "m_iPawnHealth" : 0x918, 
+    "ENT_GROUP_STRIDE" : 0x10,    
+    "ENT_ENTRY_OFFSET" : 0x10,      
+    "ENT_SLOT_STRIDE" : 0x78,    
+    "MAX_PLAYERS" :  64, 
 }
