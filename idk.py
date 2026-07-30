@@ -16,6 +16,8 @@ import sys
 import requests  # Optional: for auto-updating offsets via API
 
 
+from config import triggerbot
+
 # ================================================================
 # CS2 OFFSETS — Build 14173 (2026-07-29)
 # Source: cheatoffsets.com + s2v.app schema explorer
