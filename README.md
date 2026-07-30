@@ -11,5 +11,5 @@ pip install requests
 
 # Usage 
 ```bash
-python idk.py
+python main.py
 ```
