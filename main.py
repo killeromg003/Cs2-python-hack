@@ -14,11 +14,16 @@ import threading
 import struct
 import sys
 import requests  # Optional: for auto-updating offsets via API
+import json
 
 
 from util import triggerbot
 from util import bunnyhop
 from util import Entity
+
+
+
+
 
 # ================================================================
 # CS2 OFFSETS — Build 14173 (2026-07-29)
@@ -83,6 +88,12 @@ class Buttons:
     JUMP_RELEASE   = (1 << 16)               # IN_NEW only
 
 
+# Read offset 
+try:
+    with open('offset.json', 'r') as f:
+        data = json.load(f)
+except json.JSONDecodeError:
+    print("Invalid JSON")
 # ================================================================
 # VIRTUAL KEY CODES
 # ================================================================
@@ -240,41 +251,6 @@ def main():
     print("[+] Done. Exiting.")
 
 
-# ================================================================
-# OFFSET AUTO-UPDATER (Optional)
-# ================================================================
-
-def fetch_latest_offsets():
-    """
-    Fetch the latest offsets from cheatoffsets.com API.
-    This runs once at startup to auto-update.
-    
-    Requires: pip install requests
-    """
-    try:
-        import requests
-        resp = requests.get(
-            "https://www.cheatoffsets.com/api/game/cs2",
-            headers={"User-Agent": "CS2-Python-Triggerbot/1.0"},
-            timeout=5
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            offsets_flat = data.get("offsets_flat", {})
-            
-            # Map common names
-            offset_map = {
-                "client_dll.dwEntityList": "dwEntityList",
-                "client_dll.dwLocalPlayerPawn": "dwLocalPlayerPawn",
-                "client_dll.dwLocalPlayerController": "dwLocalPlayerController",
-            }
-            
-            print("[+] Fetched latest offsets from cheatoffsets.com")
-            return True
-    except Exception as e:
-        print(f"[!] Could not fetch offsets: {e}")
-    
-    return False
 
 
 if __name__ == "__main__":
