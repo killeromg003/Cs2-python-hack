@@ -165,7 +165,10 @@ def main():
     # --- Find CS2 process ---
     process_name = "cs2.exe"
     pm = None
-    
+    if not Offsets.load_from_json("offsets.json"):
+        input("Press Enter to exit...")
+        return
+
     try:
         pm = pymem.Pymem(process_name)
     except pymem.exception.ProcessNotFound:
