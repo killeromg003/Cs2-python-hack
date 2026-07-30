@@ -29,10 +29,16 @@ from util import Entity
 # CS2 OFFSETS — Build 14173 (2026-07-29)
 # Source: cheatoffsets.com + s2v.app schema explorer
 # ================================================================
+# Read offset 
+try:
+    with open('offset.json', 'r') as f:
+        data = json.load(f)
+except json.JSONDecodeError:
+    print("Invalid JSON")
 
 class Offsets:
     # --- client.dll globals (absolute RVAs from module base) ---
-    dwEntityList          = 0x254FE70   # -> 2-level entity list
+    dwEntityList          = data[dwEntityList]   # -> 2-level entity list
     dwLocalPlayerPawn     = 0x23A5238   # -> C_CSPlayerPawn (direct)
     dwLocalPlayerController = 0x237FB70 # -> CCSPlayerController
     dwCSGOInput           = 0x23BA790   # -> Input handler (for force commands)
@@ -88,12 +94,7 @@ class Buttons:
     JUMP_RELEASE   = (1 << 16)               # IN_NEW only
 
 
-# Read offset 
-try:
-    with open('offset.json', 'r') as f:
-        data = json.load(f)
-except json.JSONDecodeError:
-    print("Invalid JSON")
+
 # ================================================================
 # VIRTUAL KEY CODES
 # ================================================================
