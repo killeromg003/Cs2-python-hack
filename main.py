@@ -30,15 +30,17 @@ from util import Entity
 # Source: cheatoffsets.com + s2v.app schema explorer
 # ================================================================
 # Read offset 
+# Fallback or safely try loading
 try:
     with open('offset.json', 'r') as f:
         data = json.load(f)
-except json.JSONDecodeError:
-    print("Invalid JSON")
+except (FileNotFoundError, json.JSONDecodeError) as e:
+    print(f"Error loading offset.json ({e}), using default/empty fallback.")
+    data = {}
 
 class Offsets:
     # --- client.dll globals (absolute RVAs from module base) ---
-    dwEntityList          = data[dwEntityList]   # -> 2-level entity list
+    dwEntityList = data.get("dwEntityList", 0x0)
     dwLocalPlayerPawn     = 0x23A5238   # -> C_CSPlayerPawn (direct)
     dwLocalPlayerController = 0x237FB70 # -> CCSPlayerController
     dwCSGOInput           = 0x23BA790   # -> Input handler (for force commands)
