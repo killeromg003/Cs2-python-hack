@@ -16,8 +16,8 @@ import sys
 import requests  # Optional: for auto-updating offsets via API
 
 
-from config import triggerbot
-from config import bunnyhop
+from util import triggerbot
+from util import bunnyhop
 
 # ================================================================
 # CS2 OFFSETS — Build 14173 (2026-07-29)
