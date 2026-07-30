@@ -34,35 +34,35 @@ from util import Entity
 
 class Offsets:
     # --- client.dll globals (absolute RVAs from module base) ---
-    dwEntityList = data.get("dwEntityList", 0x0)
-    dwLocalPlayerPawn     = 0x23A5238   # -> C_CSPlayerPawn (direct)
-    dwLocalPlayerController = 0x237FB70 # -> CCSPlayerController
-    dwCSGOInput           = 0x23BA790   # -> Input handler (for force commands)
-    dwGlobalVars          = 0x2090D60   # Tick count, etc.
+    dwEntityList = 0x0
+    dwLocalPlayerPawn     = 0x0   # -> C_CSPlayerPawn (direct)
+    dwLocalPlayerController = 0x0 # -> CCSPlayerController
+    dwCSGOInput           = 0x0   # -> Input handler (for force commands)
+    dwGlobalVars          = 0x0   # Tick count, etc.
     
     # --- Force commands (inside client.dll, pattern-scanned) ---
     # These MUST be updated per build. Get from cs2-dumper or cheatoffsets
-    dwForceAttack         = 0x16C1E80   # +attack  (UPDATE THIS!)
-    dwForceJump           = 0x16C2390   # +jump    (UPDATE THIS!)
+    dwForceAttack         = 0x0   # +attack  (UPDATE THIS!)
+    dwForceJump           = 0x0   # +jump    (UPDATE THIS!)
 
     # --- Entity offsets (from C_CSPlayerPawn / C_BaseEntity) ---
-    m_iIDEntIndex         = 0x341C      # Entity index under crosshair
-    m_iHealth             = 0x34C       # Health (0 = dead)
-    m_iTeamNum            = 0x3EB       # Team: 2=T, 3=CT
-    m_lifeState           = 0x350       # 0 = alive, 1 = dead
-    m_fFlags              = 0x3F8       # Player flags (bit 0 = on ground)
-    m_pGameSceneNode      = 0x330       # -> CGameSceneNode (for position)
-    m_vOldOrigin          = 0x15B0      # World position (vec3)
-    m_hPawn               = 0x62C       # Pawn handle (from CBasePlayerController)
+    m_iIDEntIndex         = 0x0      # Entity index under crosshair
+    m_iHealth             = 0x0       # Health (0 = dead)
+    m_iTeamNum            = 0x0       # Team: 2=T, 3=CT
+    m_lifeState           = 0x0       # 0 = alive, 1 = dead
+    m_fFlags              = 0x0       # Player flags (bit 0 = on ground)
+    m_pGameSceneNode      = 0x0       # -> CGameSceneNode (for position)
+    m_vOldOrigin          = 0x0      # World position (vec3)
+    m_hPawn               = 0x0       # Pawn handle (from CBasePlayerController)
 
     # --- Controller offsets (from CCSPlayerController) ---
     m_hPlayerPawn         = 0x90C       # Pawn handle -> get pawn from entity list
     m_iPawnHealth         = 0x918       # Pawn health (on controller)
 
     # --- Entity list constants ---
-    ENT_GROUP_STRIDE      = 0x10        # Stride between entity groups
-    ENT_ENTRY_OFFSET      = 0x10        # Offset within group entry to get pointer
-    ENT_SLOT_STRIDE       = 0x78        # Stride between entity slots within a group
+    ENT_GROUP_STRIDE      = 0x0        # Stride between entity groups
+    ENT_ENTRY_OFFSET      = 0x0        # Offset within group entry to get pointer
+    ENT_SLOT_STRIDE       = 0x0        # Stride between entity slots within a group
     MAX_PLAYERS           = 64          # Max players in a match
     
     @classmethod
