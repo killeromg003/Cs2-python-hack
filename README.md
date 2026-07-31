@@ -1,14 +1,18 @@
-# Cs2-python-hack
-External
+# CS2 Python test utility
+
+External test utility. Use only in an authorised local testing environment.
+
 # Installation
+
 ```bash
 pip install pymem
-pip install ctypes
-pip install struct
-pip install requests 
+pip install request
 ```
 
-# Usage 
+# Usage
+
 ```bash
 python main.py
 ```
+
+`offset.json` must contain offsets appropriate for the game build being tested.
