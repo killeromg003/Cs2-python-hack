@@ -1,6 +1,6 @@
 # CS2 Python test utility
 
-External test utility. Use only in an authorised local testing environment.
+External
 
 # Installation
 
