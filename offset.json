@@ -6,6 +6,7 @@
   "dwGlobalVars": 34147680,
   "dwForceAttack": 34164608,
   "dwForceJump": 34165904,
+  "m_FlashBangTime": 0x1414,
   "m_iIDEntIndex": 13340,
   "m_iHealth": 844,
   "m_iTeamNum": 1003,
