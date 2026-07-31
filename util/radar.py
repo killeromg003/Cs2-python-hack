@@ -36,7 +36,7 @@ def radar(pm, client_base, stop_event):
                         continue
 
                     # Force the entity to show on the in-game radar minimap
-                    pm.write_uchar(entity_pawn + Offsets.m_bSpotted, 1)
+                    pm.write_uchar(entity_pawn + Offsets.m_bSpotted + Offsets.m_entitySpottedState , True)
                 except Exception:
                     continue
 
