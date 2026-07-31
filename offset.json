@@ -22,4 +22,5 @@
   "ENT_SLOT_STRIDE": 120,
   "MAX_PLAYERS": 64
   "m_entitySpottedState": 7256,
+  "m_bSpotted": 8,
 }
