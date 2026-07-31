@@ -1,5 +1,5 @@
 def antiflash(pm, clientbase):
-    localplayer = clientbase + Offsets.dw_LocalPlayerPawn
+    localplayer = clientbase + Offsets.dwLocalPlayerPawn
     switch = True
     while localplayer and switch:
         
