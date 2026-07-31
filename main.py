@@ -65,6 +65,9 @@ class Offsets:
     ENT_ENTRY_OFFSET      = 0x0        # Offset within group entry to get pointer
     ENT_SLOT_STRIDE       = 0x0        # Stride between entity slots within a group
     MAX_PLAYERS           = 64          # Max players in a match
+    # ----------------------------
+    # json loader
+    # ---------------------------
     @classmethod
     def load_from_json(cls, filepath: str) -> bool:
         """Reads offset values from a JSON file and sets them on the class."""
