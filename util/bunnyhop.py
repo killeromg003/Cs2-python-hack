@@ -1,4 +1,9 @@
-def bunnyhop(pm, client_base: int, stop_event: threading.Event):
+import time
+
+from util.core import Buttons, Offsets, VK_F1, VK_SPACE, is_key_down, is_key_pressed, read_int, read_ulong64
+
+
+def bunnyhop(pm, client_base: int, stop_event):
     """CS2 bunnyhop via dwForceJump with ground check."""
     local_pawn_ptr = client_base + Offsets.dwLocalPlayerPawn
     force_jump     = client_base + Offsets.dwForceJump
