@@ -23,6 +23,7 @@ class Offsets:
     m_pGameSceneNode = 0x0
     m_vOldOrigin = 0x0
     m_hPawn = 0x0
+    m_bSpotted =8
 
     # CCSPlayerController
     m_hPlayerPawn = 0x90C
