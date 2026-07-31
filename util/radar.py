@@ -3,10 +3,10 @@ from util.core import Offsets, read_int, read_ulong64
 from util.entity import get_entity_from_index, resolve_entity_from_handle
 
 def radar(pm, client_base, stop_event):
-    """
-    Background worker thread that automatically spots players 
-    by writing to their m_bSpotted property in CS2 using util/entity.py functions.
-    """
+    
+    #Background worker thread that automatically spots players 
+    #by writing to their m_bSpotted property in CS2 using util/entity.py functions.
+    
     while not stop_event.is_set():
         try:
             entity_list = read_ulong64(pm, client_base + Offsets.dwEntityList)
