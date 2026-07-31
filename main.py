@@ -45,7 +45,7 @@ class Offsets:
     dwForceAttack         = 0x0   # +attack  (UPDATE THIS!)
     dwForceJump           = 0x0   # +jump    (UPDATE THIS!)
     # ------dw local player pawn settings
-    m_FlashBangTime.      = 0x0
+    m_FlashBangTime       = 0x0
     # --- Entity offsets (from C_CSPlayerPawn / C_BaseEntity) ---
     m_iIDEntIndex         = 0x0      # Entity index under crosshair
     m_iHealth             = 0x0       # Health (0 = dead)
@@ -156,7 +156,8 @@ def read_bool(pm, addr: int) -> bool:
     """Read 1 byte as boolean."""
     return pm.read_bytes(addr, 1) != b'\x00'
 
-
+def read_float(pm, addr)
+    return pm.read_float(addr)
 
 
 
@@ -247,6 +248,10 @@ def main():
         daemon=True,
         name="TriggerThread"
     )
+    
+    antiflash_thread = threading.Thread(
+        target=antiflash,
+        
     
     bhop_thread.start()
     trigger_thread.start()
