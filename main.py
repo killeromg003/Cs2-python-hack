@@ -20,7 +20,7 @@ import json
 from util import triggerbot
 from util import bunnyhop
 from util import Entity
-
+from util import antiflash
 
 
 
