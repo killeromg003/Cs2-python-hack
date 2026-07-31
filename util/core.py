@@ -29,9 +29,9 @@ class Offsets:
     m_iPawnHealth = 0x918
 
     # Entity-list layout
-    ENT_GROUP_STRIDE = 0x0
-    ENT_ENTRY_OFFSET = 0x0
-    ENT_SLOT_STRIDE = 0x0
+    ENT_GROUP_STRIDE = 0x10
+    ENT_ENTRY_OFFSET = 0x8
+    ENT_SLOT_STRIDE = 0x78
     MAX_PLAYERS = 64
 
     @classmethod
