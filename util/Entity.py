@@ -1,13 +1,6 @@
-"""CS2 two-level entity-list helpers."""
-
 from util.core import Offsets, read_ulong64
 
 def get_entity_from_index(pm, entity_list_base: int, index: int) -> int:
-    """
-    Resolve an entity from CS2's 2-level entity list.
-    
-    Returns the entity address, or 0 if invalid.
-    """
     if index <= 0 or index > 4096:
         return 0
     
@@ -30,12 +23,6 @@ def get_entity_from_index(pm, entity_list_base: int, index: int) -> int:
 
 
 def resolve_entity_from_handle(pm, entity_list_base: int, handle: int) -> int:
-    """
-    Resolve an entity from a CHandle (like m_hPlayerPawn).
-    The handle encodes the index and serial number.
-    
-    For most cases, handle & 0x7FFF gives the entity index.
-    """
     if handle == 0 or handle == 0xFFFFFFFF:
         return 0
     

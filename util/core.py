@@ -1,5 +1,3 @@
-"""Shared offsets, input constants, and memory helpers."""
-
 import ctypes
 import json
 import struct

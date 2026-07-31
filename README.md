@@ -6,6 +6,7 @@ External test utility. Use only in an authorised local testing environment.
 
 ```bash
 pip install pymem
+pip install request
 ```
 
 # Usage

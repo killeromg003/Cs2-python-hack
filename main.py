@@ -1,5 +1,3 @@
-"""CS2 external test utility entry point."""
-
 import threading
 import time
 
