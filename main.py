@@ -7,7 +7,7 @@ import pymem.process
 
 from util.antiflash import antiflash
 from util.bunnyhop import bunnyhop
-from util.core import Offsets, VK_F3, VK_F4, is_key_down, is_key_pressed, read_int, read_ulong64
+from util import core
 from util.triggerbot import triggerbot
 
 
