@@ -3,7 +3,6 @@ from util.core import Offsets, read_int, read_float, read_ulong64
 from util.entity import get_entity_from_index, resolve_entity_from_handle
 
 def get_bone_position(pm, entity_pawn: int, bone_index: int = 6) -> tuple:
-    """Reads the 3D world position of a specific bone (default 6 for head)."""
     try:
         game_scene_node = read_ulong64(pm, entity_pawn + Offsets.m_pGameSceneNode)
         if not game_scene_node:
@@ -31,6 +30,7 @@ def run_aimbot_logic(pm, client_base):
     """Main loop combining steps 1, 2, and 3 for target tracking."""
     entity_list = read_ulong64(pm, client_base + Offsets.dwEntityList)
     local_player_pawn = read_ulong64(pm, client_base + Offsets.dwLocalPlayerPawn)
+    final_viewmatrix = read_int(Offsets.dwViewMatrix + client_base)
     
     if not entity_list or not local_player_pawn:
         return
@@ -66,6 +66,4 @@ def run_aimbot_logic(pm, client_base):
             continue
 
         head_x, head_y, head_z = head_pos
-        
-        # [Optional Next Step]: Pass head_x, head_y, head_z into your ViewMatrix / Screen conversion math here!
-        # print(f"Valid Target Found! Head at: X={head_x:.1f}, Y={head_y:.1f}, Z={head_z:.1f}")
+        world_to_screen(final_viewmatrix, 
