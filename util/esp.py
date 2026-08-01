@@ -28,7 +28,7 @@ def get_bone_position(pm, entity_pawn: int, bone_index: int = 6) -> tuple:
 from util.entity import get_all_players
 from util.calculation import word_to_screen
 
-def run_esp_logic(pm, client_base, local_player_pawn):
+def run_esp_logic(pm, client_base, stop_event,local_player_pawn):
         
     TRIGGER_KEY = VK_XBUTTON1  # Mouse button 4
     trigger_active = False
