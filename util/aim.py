@@ -34,8 +34,8 @@ def aimbot(pm,client_base)
    view_offset_z = read_float(pm, local_player_pawn + Offsets.m_vecViewOffset + 0x8)
 
     local_eye_pos = (origin_x, origin_y, origin_z + view_offset_z)
+    head_pos = get_bone_position(pm, p["pawn"], 6)
 
-# Calculate angles to enemy head
     pitch, yaw = calculate_angles(local_eye_pos, head_pos)
 
 # Write to client view angles
