@@ -1,4 +1,4 @@
-def world_to_screen(matrix, pos_x, pos_y, pos_z, window_width, window_height):
+def world_to_screen(matrix, pos_x, pos_y, pos_z, window_width=1920, window_height=1080):
     # 1. Multiply 3D world coordinates by the 4x4 ViewMatrix
     # Matrix layout is typically a flat list or array of 16 floats
     transformed_x = matrix[0] * pos_x + matrix[1] * pos_y + matrix[2] * pos_z + matrix[3]
