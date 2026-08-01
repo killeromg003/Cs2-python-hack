@@ -29,6 +29,14 @@ from util.entity import get_all_players
 from util.calculation import word_to_screen
 
 def run_esp_logic(pm, client_base, local_player_pawn):
+        
+    TRIGGER_KEY = VK_XBUTTON1  # Mouse button 4
+    trigger_active = False
+    print(f"[Trigger] Ready. Hold mouse button 4 to fire on enemies.")
+    print(f"[Trigger] Entity list base: 0x{entity_list:X}")
+    
+    while not stop_event.is_set():
+        time.sleep(0.001)  # 1ms loop
     # Gets all valid players in a single clean pass
     players = get_all_players(pm, client_base, local_player_pawn)
     local_team = read_int(pm, local_player_pawn + Offsets.m_iTeamNum)
