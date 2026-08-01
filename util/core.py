@@ -35,6 +35,8 @@ class Offsets:
     ENT_SLOT_STRIDE = 0x78
     MAX_PLAYERS = 64
     m_entitySpottedState = 0x0
+    
+    m_modelState = 320
 
     @classmethod
     def load_from_json(cls, filepath: str) -> bool:
