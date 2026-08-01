@@ -28,11 +28,11 @@ def get_bone_position(pm, entity_pawn: int, bone_index: int = 6) -> tuple:
 from util.entity import get_all_players
 from util.calculation import word_to_screen
 
-def run_aimbot_logic(pm, client_base, local_player_pawn):
+def run_esp_logic(pm, client_base, local_player_pawn):
     # Gets all valid players in a single clean pass
     players = get_all_players(pm, client_base, local_player_pawn)
     local_team = read_int(pm, local_player_pawn + Offsets.m_iTeamNum)
-    final_viewmatrix = 
+    final_viewmatrix = read_int(client_base + Offsets.dwViewAngles)
 
     for p in players:
         if p["team"] == local_team:
