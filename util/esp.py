@@ -38,21 +38,22 @@ def run_esp_logic(pm, client_base, stop_event,local_player_pawn):
     while not stop_event.is_set():
         time.sleep(0.001)  # 1ms loop
     # Gets all valid players in a single clean pass
-    players = get_all_players(pm, client_base, local_player_pawn)
-    local_team = read_int(pm, local_player_pawn + Offsets.m_iTeamNum)
-    final_viewmatrix = read_int(client_base + Offsets.dwViewAngles)
+        players = get_all_players(pm, client_base, local_player_pawn)
+        local_team = read_int(pm, local_player_pawn + Offsets.m_iTeamNum)
+        final_viewmatrix = read_int(client_base + Offsets.dwViewAngles)
 
-    for p in players:
-        if p["team"] == local_team:
-            continue # Skip teammates
+        for p in players:
+            if p["team"] == local_team:
+                continue # Skip teammates
             
         
-        head_pos = get_bone_position(pm, p["pawn"], 6)
-        if head_pos:
-            # Do your aim calculations here!
-            pass
-        head_x,head_y,head_z = head_pos
-        world_to_screen(final_viewmatrix,head_x,head_y,head_z)
+            head_pos = get_bone_position(pm, p["pawn"], 6)
+            if head_pos:
+                # Do your aim calculations here!
+                pass
+            head_x,head_y,head_z = head_pos
+            world_to_screen(final_viewmatrix,head_x,head_y,head_z)
+            
         
 
 
