@@ -1,7 +1,7 @@
 import time
 
-from util.Entity import get_entity_from_index
 from util.core import Buttons, Offsets, VK_F2, VK_XBUTTON1, is_key_down, is_key_pressed, read_int, read_ulong64
+from util.entity import get_entity_from_index
 
 
 def triggerbot(pm, client_base: int, stop_event):

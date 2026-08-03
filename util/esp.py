@@ -1,8 +1,12 @@
+import struct
 import time
-from util.core import Offsets, read_int, read_float, read_ulong64
-from util.entity import get_entity_from_index, resolve_entity_from_handle
 
-def get_bone_position(pm, entity_pawn: int, bone_index: int = 6) -> tuple:
+from util.calculation import world_to_screen
+from util.core import Offsets, read_float, read_int, read_ulong64
+from util.entity import get_all_players
+
+
+def get_bone_position(pm, entity_pawn: int, bone_index: int = 6):
     try:
         game_scene_node = read_ulong64(pm, entity_pawn + Offsets.m_pGameSceneNode)
         if not game_scene_node:
@@ -25,38 +29,35 @@ def get_bone_position(pm, entity_pawn: int, bone_index: int = 6) -> tuple:
         return (x, y, z)
     except Exception:
         return None
-from util.entity import get_all_players
-from util.calculation import word_to_screen
 
-def run_esp_logic(pm, client_base, stop_event,local_player_pawn):
-        
-    TRIGGER_KEY = VK_XBUTTON1  # Mouse button 4
-    trigger_active = False
-    print(f"[Trigger] Ready. Hold mouse button 4 to fire on enemies.")
-    print(f"[Trigger] Entity list base: 0x{entity_list:X}")
-    
+
+def run_esp_logic(pm, client_base, stop_event, local_player_pawn):
+    print("[ESP] Ready.")
+
     while not stop_event.is_set():
-        time.sleep(0.001)  # 1ms loop
-    # Gets all valid players in a single clean pass
+        time.sleep(0.001)
+
         players = get_all_players(pm, client_base, local_player_pawn)
         local_team = read_int(pm, local_player_pawn + Offsets.m_iTeamNum)
-        final_viewmatrix = read_int(client_base + Offsets.dwViewAngles)
+
+        # dwViewMatrix points to a 4x4 float matrix (16 floats, 64 bytes)
+        view_matrix_ptr = read_ulong64(pm, client_base + Offsets.dwViewMatrix)
+        if not view_matrix_ptr:
+            continue
+
+        matrix = struct.unpack("<16f", pm.read_bytes(view_matrix_ptr, 64))
 
         for p in players:
             if p["team"] == local_team:
-                continue # Skip teammates
-            
-        
+                continue  # Skip teammates
+
             head_pos = get_bone_position(pm, p["pawn"], 6)
-            if head_pos:
-                # Do your aim calculations here!
-                pass
-            head_x,head_y,head_z = head_pos
-            world_to_screen(final_viewmatrix,head_x,head_y,head_z)
-            
-        
+            if not head_pos:
+                continue
 
+            screen = world_to_screen(matrix, *head_pos)
+            if screen is None:
+                continue
 
-  
-
-             
+            # Rendering/overlay is not implemented here; screen coords are ready to draw.
+            pass

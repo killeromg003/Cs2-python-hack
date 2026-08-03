@@ -1,4 +1,4 @@
-from util.core import Offsets, read_ulong64
+from util.core import Offsets, read_int, read_ulong64
 
 def get_entity_from_index(pm, entity_list_base: int, index: int) -> int:
     if index <= 0 or index > 4096:
@@ -28,7 +28,7 @@ def resolve_entity_from_handle(pm, entity_list_base: int, handle: int) -> int:
     
     entity_index = handle & 0x7FFF
     return get_entity_from_index(pm, entity_list_base, entity_index)
-# In util/entity.py
+
 
 def get_all_players(pm, client_base, local_player_pawn):
     """

@@ -12,6 +12,11 @@ class Offsets:
     dwGlobalVars = 0x0
     dwForceAttack = 0x0
     dwForceJump = 0x0
+    dwViewAngles = 0x0
+    dwViewMatrix = 0x0
+    dwGlowManager = 0x0
+    dwGameRules = 0x0
+    dwGameEntitySystem = 0x0
 
     # C_CSPlayerPawn / C_BaseEntity
     m_FlashBangTime = 0x0
@@ -22,8 +27,9 @@ class Offsets:
     m_fFlags = 0x0
     m_pGameSceneNode = 0x0
     m_vOldOrigin = 0x0
+    m_vecViewOffset = 0x0
     m_hPawn = 0x0
-    m_bSpotted =8
+    m_bSpotted = 0x8
 
     # CCSPlayerController
     m_hPlayerPawn = 0x90C
@@ -35,8 +41,7 @@ class Offsets:
     ENT_SLOT_STRIDE = 0x78
     MAX_PLAYERS = 64
     m_entitySpottedState = 0x0
-    
-    m_modelState = 320
+    m_modelState = 0x140
 
     @classmethod
     def load_from_json(cls, filepath: str) -> bool:
@@ -89,6 +94,10 @@ def is_key_pressed(vk: int) -> bool:
 
 def read_int(pm, address: int) -> int:
     return pm.read_int(address)
+
+
+def read_float(pm, address: int) -> float:
+    return pm.read_float(address)
 
 
 def read_ulong64(pm, address: int) -> int:
